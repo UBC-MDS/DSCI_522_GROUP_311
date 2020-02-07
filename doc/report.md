@@ -36,7 +36,8 @@ physicochemical lab test results. Therefore, a model integrating
 physiochemical lab tests and sensory tests is helpful in addressing the
 industry concern, supporting the wine evaluation and thus improving
 local wine production.  
-\#\# Methodology
+
+## Methodology
 
 The data used in this project is obtain from the [University of
 California Irvine Machine learning
