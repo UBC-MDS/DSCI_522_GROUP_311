@@ -57,15 +57,19 @@ def main(input, output):
     
 
     feature_plot = alt.Chart(df).mark_line().encode(
-        x='n_features_to_select:N',
+        x=alt.X('n_features_to_select:N', title = 'Number of features to select', axis=alt.AxisConfig(labelAngle=0)),
         y='value:Q',
-        color = 'error_type'
-    ).configure_scale(round = True).configure_axisX(labelAngle=0)
+        color = alt.Color('error_type', sort=['Train error'])
+    ).configure_scale(round = True)
     
+    feature_plot.configure_header(
+        titleFontSize=80,
+        labelFontSize=80
+    )
     
     feature_plot.configure(
     ).properties(
-        title = "The relationship between MSE and number of features",
+        title = "The relationship between MSE and number of features", 
         width = 800,
         height = 400
     ).save(output+ "/ranked_features.png")
@@ -97,11 +101,15 @@ def main(input, output):
     print(relevant_features_list)
     
     feature_weight_plot = alt.Chart(relevant_features_list).mark_bar().encode(
-    alt.X('features:N', sort=alt.EncodingSortField(field="features", op="count", order='ascending')),
-    y='weights:Q'
-    ).configure_axisX(labelFontSize= 15,labelAngle= -45)
+        alt.Y('features:N', sort=alt.EncodingSortField(field="features", op="count", order='ascending')),
+        alt.X('weights:Q')
+    )
     
-    
+    feature_weight_plot.configure_header(
+        titleFontSize=80,
+        labelFontSize=80
+    )
+
     feature_weight_plot.configure(
     ).properties(
     title = "The feature weights",
@@ -117,10 +125,15 @@ def main(input, output):
     result_df = pd.concat([y_pred_df, y_true_df], axis=1)
 
     plot_result = alt.Chart(result_df).mark_boxplot().encode(
-        alt.X('actual:O',scale=alt.Scale(zero=False)),
+        alt.X('actual:O',scale=alt.Scale(zero=False), axis=alt.AxisConfig(labelAngle=0)),
         alt.Y('predicted',scale=alt.Scale(zero=False))
-    ).configure_axisX(labelFontSize= 15,labelAngle= -45)
+    )
     
+    plot_result.configure_header(
+        titleFontSize=80,
+        labelFontSize=80
+    )
+
     plot_result.configure(
         numberFormat="0.4f"
     ).properties(

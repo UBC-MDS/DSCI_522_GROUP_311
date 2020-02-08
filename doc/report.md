@@ -28,16 +28,15 @@ certification and quality assessment are essential given this context.
 Wine quality assessment basically consists of two parts: the lab test
 and the sensory test. Physicochemical lab tests generally characterize
 wine based on features such as density, pH value, acidity, sugar, and
-alcohol, etc. While the sensory test is mainly relying on qualified
-experts. Due to the low interpretation of human sense, the relationship
-between sensory tests and the lab tests is somehow compared to a black
-box. The industry is curious about how ‘good’ the wine is, given the
+alcohol, etc. While the sensory test mainly relies on qualified experts.
+Due to the low interpretation of human sense, the relationship between
+sensory tests and the lab tests is somehow compared to a black box. The
+industry is curious about how ‘good’ the wine is, given the
 physicochemical lab test results. Therefore, a model integrating
 physiochemical lab tests and sensory tests is helpful in addressing the
 industry concern, supporting the wine evaluation and thus improving
 local wine production.  
-
-## Methodology
+\#\# Methodology
 
 The data used in this project is obtained from the [University of
 California Irvine Machine learning
@@ -50,11 +49,11 @@ properties (features) from lab tests and also the sensory results
 The Analysis portion of this project is done by Python. A standard
 scaler is used to scale all features into the same scale. To perform
 feature selection, we use scikit-learn’s linear regression as an
-estimator and perform recursive feature selection. Reragding the number
+estimator and perform recursive feature selection. Regarding the number
 of features to select, we try the number from 1 to 11 (sum of features),
 we found that if we continute to add more features after 6, the model
-will stop improving. Therefore, we perform linear regression on the top six
-features by using scikit-learn’s linear regression model.
+will stop improving. Therefore, we perform linear regression on the top
+six features by using scikit-learn’s linear regression model.
 
 The following Python packages were used in this project:
 
@@ -104,11 +103,11 @@ help:
 
 <div class="figure">
 
-<img src="../results/ranked_features.png" alt="Figure 2. The relationship between MSE and number of featurs" width="100%" />
+<img src="../results/ranked_features.png" alt="Figure 1. The relationship between MSE and number of featurs" width="100%" />
 
 <p class="caption">
 
-Figure 2. The relationship between MSE and number of featurs
+Figure 1. The relationship between MSE and number of featurs
 
 </p>
 
@@ -124,11 +123,11 @@ order:
 
 <div class="figure">
 
-<img src="../results/feature_weight_plot.png" alt="Figure 1. Feature weight" width="90%" />
+<img src="../results/feature_weight_plot.png" alt="Figure 2. Feature weight" width="90%" />
 
 <p class="caption">
 
-Figure 1. Feature weight
+Figure 2. Feature weight
 
 </p>
 
@@ -159,8 +158,8 @@ range (grades 5 to 7). However, for the low grade and high grade wines
 Even without domain expertise, we all know that those physiochemical
 properties of wine should be good indicators of the wine qualities. The
 fact that the model performed well on middle range proves that the
-selected features are useful and a linear regression is a reason model
-to choose.
+selected features are useful and a linear regression is a reasonable
+model to choose.
 
 The reason that it did not perform well on low-grade and high-grade may
 be due to that the original training set is already not balanced enough,
