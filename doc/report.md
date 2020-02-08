@@ -150,8 +150,9 @@ Figure 3. Prediction results
 </div>
 
 Based on the plot, we can see that our model predicts well on the middle
-range (grades 5 to 7). However, for the low grade and high grade wines
-(wine with grades 4 and 8), the model tends to under-estimate.
+range (grades 5 and 6). However, for the low grade, the model tends to
+over-estimate (eg. grade 4), while for high grade wines (wine with
+grades 7 and 8), the model tends to under-estimate.
 
 ## Discussion:
 
