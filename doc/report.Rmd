@@ -3,7 +3,7 @@ title: "The red wine quality prediction"
 author: "DSCI 522 Group 311: Tao Huang, Hanying Zhang, Xugang Zhong"
 date: "2020-01-24 "
 output:
-  html_document:
+  github_document:
     toc: true
 bibliography: ref.bib
 ---
