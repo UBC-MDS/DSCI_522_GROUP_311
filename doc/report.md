@@ -35,8 +35,9 @@ industry is curious about how ‘good’ the wine is, given the
 physicochemical lab test results. Therefore, a model integrating
 physiochemical lab tests and sensory tests is helpful in addressing the
 industry concern, supporting the wine evaluation and thus improving
-local wine production.  
-\#\# Methodology
+local wine production.
+
+## Methodology
 
 The data used in this project is obtained from the [University of
 California Irvine Machine learning
@@ -93,13 +94,19 @@ The following Python packages were used in this project:
 
 ## Results
 
-By applying `sklearn`’s `Recursive Feature Selection`, we recursively
-fit a Linear Regression model to the data to get all the coefficients
-(as measures of importances). Each time, we increase the number of
-featuers that we like to select, from 1 to 11 (all the features).
-Eventually, we found after only 6 features are helping to decrease the
-errors, increasing the number of features selected beyond 6 will not
-help:
+`Recursive Feature Selection (RFE)` from `sklearn` package was deployed
+to select features. This job is recursively considering smaller and
+smaller sets of features. First, the estimator is trained on the initial
+set of features and the importance of each feature is obtained either
+through a `coef_ attribute` or through a `feature_importances_
+attribute`. Then, the least important features are pruned from current
+set of features. That procedure is recursively repeated on the pruned
+set until the desired number of features to select is eventually
+reached.
+
+Specificly, as shown in figure below, it is noticed that when number of
+features is six, we can get a minimum error for both training and
+testing.
 
 <div class="figure">
 
@@ -113,9 +120,9 @@ Figure 1. The relationship between MSE and number of featurs
 
 </div>
 
-Now, we run `sklearn`’s `Recursive Feature Selection` again with the
-`n_features_to_select` explicitly set to 6, then the algorithm will fit
-linear regression models, remove one feature that has the smallest
+Therefore, we run `sklearn`’s `Recursive Feature Selection` again with
+the `n_features_to_select` explicitly set to 6, then the algorithm will
+fit linear regression models, remove the feature that has the smallest
 weight. `sklearn` recursively does this until the number of the features
 decrease to 6. The following are the 6 features remained eventually and
 their corresponding weights in ascending
@@ -133,8 +140,8 @@ Figure 2. Feature weight
 
 </div>
 
-Finally, we plot the actual values on the x-axis and the predicted
-values on the
+To find out how our model performs, the following plot was created with
+the actual values on the x-axis and the predicted values on the
 y-axis:
 
 <div class="figure">
@@ -149,28 +156,29 @@ Figure 3. Prediction results
 
 </div>
 
-Based on the plot, we can see that our model predicts well on the middle
-range (grades 5 and 6). However, for the low grade, the model tends to
-over-estimate (eg. grade 4), while for high grade wines (wine with
-grades 7 and 8), the model tends to under-estimate.
+Based on the plot, we can see that our model predicts well on the wines
+whose grades are ranging from 5 and 6. However, for the low-graded
+wines, the model tends to over-estimating (eg. grade 4), while for
+high-graded wines (wine with grades 7 and 8), the model tends to
+under-estimating.
 
 ## Discussion:
 
 Even without domain expertise, we all know that those physiochemical
-properties of wine should be good indicators of the wine qualities. The
-fact that the model performed well on middle range proves that the
-selected features are useful and a linear regression is a reasonable
-model to choose.
+properties should be good indicators of the wine qualities. The fact
+that the model performed well on middle range proves that the selected
+features are useful and a linear regression is a reasonable model to
+choose.
 
-The reason that it did not perform well on low-grade and high-grade may
-be due to that the original training set is already not balanced enough,
-the data set does have more examples for the middle-grade wines and less
-examples for low and high grade wines, which means our model can not
-‘learn’ enough from the low and high grade wines.
+The reason that it did not perform well on low-graded and high-graded
+wines may be due to exitence of imbalance in the original training set.
+There are more examples of the middle-graded wines in the dataset. In
+other words, our model can not ‘learn’ enough from the low-graded and
+high-graded wines.
 
-Some potential improvements can be simply oversampling the high-grade
-and low-grade wines to supplement the origianl dataset or to undersample
-the middle-grade wines in the original dataset.
+Some potential improvements can be simply oversampling the high-graded
+and low-graded wines to supplement the origianl dataset or to
+undersample the middle-graded wines in the original dataset.
 
 ## References
 
