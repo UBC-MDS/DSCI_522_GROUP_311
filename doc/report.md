@@ -36,14 +36,15 @@ physicochemical lab test results. Therefore, a model integrating
 physiochemical lab tests and sensory tests is helpful in addressing the
 industry concern, supporting the wine evaluation and thus improving
 local wine production.  
-\#\# Methodology
 
-The data used in this project is obtain from the [University of
+## Methodology
+
+The data used in this project is obtained from the [University of
 California Irvine Machine learning
 Repository](http://archive.ics.uci.edu/ml/datasets/Wine+Quality)(Cortez
 et al. 2009)(Dua and Graff 2017). It contains 1599 samples from red wine
 produced in Portugal. Each sample represents 11 physiochemical
-properties (features) from lab tests and also the sensory result
+properties (features) from lab tests and also the sensory results
 (response) ranging from 0 to 10.
 
 The Analysis portion of this project is done by Python. A standard
@@ -51,8 +52,8 @@ scaler is used to scale all features into the same scale. To perform
 feature selection, we use scikit-learn’s linear regression as an
 estimator and perform recursive feature selection. Reragding the number
 of features to select, we try the number from 1 to 11 (sum of features),
-we found after selecting six features, if we selected more, the model
-stop improving. Then we perform linear regression on the top six
+we found that if we continute to add more features after 6, the model
+will stop improving. Therefore, we perform linear regression on the top six
 features by using scikit-learn’s linear regression model.
 
 The following Python packages were used in this project:
