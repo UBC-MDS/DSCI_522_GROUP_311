@@ -57,10 +57,10 @@ def main(input, output):
     
 
     feature_plot = alt.Chart(df).mark_line().encode(
-        x='n_features_to_select:N',
-        y='value:Q',
+        alt.X("n_features_to_select:N", title = "Number of features selected"),
+        alt.Y("value:Q", title = "Value"),
         color = 'error_type'
-    ).configure_scale(round = True).configure_axisX(labelAngle=0)
+    ).configure_scale(round = True).configure_axisX(labelAngle=90)
     
     
     feature_plot.configure(
@@ -99,7 +99,7 @@ def main(input, output):
     feature_weight_plot = alt.Chart(relevant_features_list).mark_bar().encode(
     alt.X('features:N', sort=alt.EncodingSortField(field="features", op="count", order='ascending')),
     y='weights:Q'
-    ).configure_axisX(labelFontSize= 15,labelAngle= -45)
+    ).configure_axisX(labelFontSize= 15,labelAngle= 0)
     
     
     feature_weight_plot.configure(
